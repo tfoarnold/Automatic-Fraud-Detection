@@ -25,7 +25,16 @@ SECRET_KEY = 'django-insecure-3!qk55+5wq+!tbnz8*+)m+v+l!u&^b=xuxug_6bmmw@_ra%h4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS - Autoriser les connexions depuis Flutter
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost', 
+    '10.0.2.2',      # Émulateur Android
+    '192.168.47.219',  # Adresse IP de l'appareil physique
+    '192.168.47.*',   # Réseau local pour appareils physiques
+    '0.0.0.0',
+]
+
 
 AUTH_USER_MODEL = 'appdatascience.CustomUser'
 
@@ -61,11 +70,27 @@ REST_FRAMEWORK = {
     )
 }
 
+
+# CORS - Configuration pour permettre les requêtes cross-origin depuis Flutter
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
+    "http://127.0.0.1:3000", 
+    "http://10.0.2.2:8000",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True  # Pour le développement seulement
+
+CORS_ALLOWED_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin', 
+    
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 SIMPLE_JWT = {
