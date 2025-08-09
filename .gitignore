@@ -1,0 +1,81 @@
+
+# ===== DJANGO BACKEND =====
+
+# Environnement virtuel Python
+venv/
+env/
+ENV/
+.venv/
+.env/
+env.bak/
+venv.bak/
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Base de données
+*.db
+*.sqlite3
+db.sqlite3
+database.db
+
+# Variables d'environnement Django
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Fichiers de log Django
+*.log
+logs/
+*.log.*
+
+# Fichiers média Django
+media/
+staticfiles/
+static/
+
+# Configuration IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de cache
+.cache/
+*.pyc
+*.pyo
+*.pyd
+
+# Dossiers de migration (optionnel - décommentez si vous ne voulez pas versionner)
+# */migrations/
+# !*/migrations/__init__.py
+
+# Fichiers de configuration sensibles
+local_settings.py
+settings_local.py
+secrets.json
