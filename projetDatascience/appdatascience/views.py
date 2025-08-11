@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from .models import CustomUser, Transaction
 from .serializers import (
     CustomUserSerializer,
@@ -27,6 +28,32 @@ class RegisterView(generics.CreateAPIView):
 
 class LoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAuthenticated]  # Seuls les users connectés peuvent consulter
+    lookup_field = 'id'  # On récupérera par l'id
+
+class UserListView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAuthenticated]  # Seuls les utilisateurs connectés peuvent voir la liste
+
+class UserDeleteView(generics.DestroyAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAdminUser]  # Seul l'admin peut supprimer
+    lookup_field = 'id'
+
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        username = user.username
+        user.delete()
+        return Response(
+            {"message": f"L'utilisateur {username} a été supprimé avec succès."},
+            status=status.HTTP_204_NO_CONTENT
+        )
 
 class TransactionListView(generics.ListCreateAPIView):
     serializer_class = TransactionSerializer
