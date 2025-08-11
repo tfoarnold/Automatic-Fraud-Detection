@@ -63,6 +63,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True
     )
+    solde = models.DecimalField(_('Solde'),max_digits=15,decimal_places=2,default=0.00)
     is_active = models.BooleanField(_('Actif'), default=True)
     is_staff = models.BooleanField(_('Staff'), default=False)  # Permet l'accès à l'admin
     date_joined = models.DateTimeField(_('Date inscription'), auto_now_add=True)

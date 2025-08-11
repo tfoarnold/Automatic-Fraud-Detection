@@ -61,9 +61,10 @@ class TransactionListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Transaction.objects.filter(
-            models.Q(origin=user) | models.Q(destination=user)
-        ).order_by('-date_enregistrement')
+        return Transaction.objects.order_by('-date_enregistrement')
+    # return Transaction.objects.filter(
+    #         models.Q(origin=user) | models.Q(destination=user)
+    #     ).order_by('-date_enregistrement')
 
     def perform_create(self, serializer):
         serializer.save(origin=self.request.user)

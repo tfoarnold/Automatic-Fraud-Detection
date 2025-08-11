@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
-        fields = ['id', 'name', 'description']
+        fields = ['id', 'name']
 
 class CustomUserSerializer(serializers.ModelSerializer):
     role = RoleSerializer(read_only=True)
