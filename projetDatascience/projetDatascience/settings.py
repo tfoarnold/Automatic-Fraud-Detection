@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost', 
     '10.0.2.2',      # Émulateur Android
-    '192.168.47.219',  # Adresse IP de l'appareil physique
+    '10.159.75.219',  # Adresse IP de l'appareil physique
     '192.168.47.*',   # Réseau local pour appareils physiques
     '0.0.0.0',
 ]
